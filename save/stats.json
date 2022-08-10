@@ -1,0 +1,30 @@
+{
+  "modes": {
+    "training": {
+      "playtime": 0
+    },
+    "arcade": {
+      "playtime": 12.4,
+      "clear": 1,
+      "clearcount": {
+        "normalryu": 1
+      },
+      "ranking": [
+        {
+          "score": 291000,
+          "time": 12.4,
+          "name": "AAA",
+          "chars": [
+            "normalryu"
+          ],
+          "tmode": 0,
+          "ailevel": 5,
+          "win": 2,
+          "lose": 0,
+          "consecutive": 2
+        }
+      ]
+    }
+  },
+  "playtime": 12.4
+}

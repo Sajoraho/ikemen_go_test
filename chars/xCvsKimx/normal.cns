@@ -1,0 +1,1408 @@
+;---------------------------------------------------------------------------
+; Standing Light Punch
+[Statedef 200]
+type    = S				;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= A				;Move-type: A-attack, I-idle, H-gethit
+physics = S				;Physics: S-stand, C-crouch, A-air
+juggle  = 2				;Number of air juggle points move takes
+velset = 0,0			;Set velocity (x,y) (Def: no change)
+ctrl = 0				;Set ctrl (Def: no change)
+anim = 200				;Change animation (Def: no change)
+poweradd = 0			;Power to add (Def: 0)
+sprpriority = 2			;Set layering priority to 2 (in front)
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,4
+volume = 0
+channel = -1
+
+[State 200, hit]
+type=hitdef
+trigger1 = Time = 0
+attr=S,NA
+damage=15,0
+animtype=Light
+guardflag=MA
+hitflag=MAF
+priority=3,Hit
+pausetime = ifelse(var(20), 4, 8), ifelse(var(20), 4, 8)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=150), var(43):=-78		;X-offset for the "hit spark" rel. to p2,
+hitsound = s1,5			;Sound to play on hit
+guardsound = s2,0
+ground.type = high
+ground.slidetime = 8
+ground.hittime  = 11
+ground.velocity = -7.5
+air.velocity = -4,-2
+air.cornerpush.veloff = 0
+persistent = 0
+getpower = 72*!var(20), 36*!var(20)
+givepower = 36,36
+
+[State 200, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Standing Medium Punch
+[Statedef 210]
+type    = S
+movetype= A
+physics = S
+juggle  = 3
+poweradd=18*!var(20)
+ctrl = 0
+velset = 0,0
+anim = 210
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,1
+volume = 0
+channel = -1
+
+[State 205, hit]
+type=hitdef
+trigger1 = Time = 0
+attr=S,NA
+damage=55,0
+animtype=Medium
+guardflag=MA
+hitflag=MAF
+priority=4,Hit
+pausetime = ifelse(var(20), 5, 10), ifelse(var(20), 5, 10)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=62), var(43):=-78
+hitsound=s1,4
+guardsound=s2,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 18
+ground.velocity = -7
+air.velocity = -4,-3
+air.cornerpush.veloff = 0
+persistent = 0
+getpower = ifelse(!var(13),144,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=2
+
+[State 210, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Standing Strong Punch
+[Statedef 220]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd=18*!var(20)
+ctrl = 0
+velset = 0,0
+anim = ifelse(p2bodydist x <=10,225,220)
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,2
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,5
+volume = 0
+channel = -1
+
+[State 210, hit]
+type=hitdef
+triggerall=anim = 220
+trigger1=time = 0
+attr=S,NA
+damage=90,0
+animtype=Hard
+guardflag=MA
+hitflag=MAF
+priority=5,Hit
+pausetime = ifelse(var(20), 6, 12), ifelse(var(20), 6, 12)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=90), var(43):=-73
+hitsound=s1,6
+guardsound=s2,0
+ground.type=Low
+ground.slidetime=12
+ground.hittime=16
+ground.velocity=-10
+air.type=Low
+air.velocity=-4,-4
+getpower = ifelse(!var(13),216,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=12
+envshake.ampl=3
+
+[State 210, hit]
+type=hitdef
+triggerall=anim = 225
+trigger1=animelem = 3
+attr=S,NA
+damage=40,0
+animtype=Hard
+guardflag=MA
+hitflag=MAF
+priority=5,Hit
+pausetime=13,13
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=85), var(43):=-75
+hitsound=s1,6
+guardsound=s2,0
+ground.type=low
+ground.hittime=16
+ground.slidetime=16
+ground.velocity= -6, 0
+ground.cornerpush.veloff= -8
+air.type=Low
+air.hittime=12
+air.velocity= -2.5, -7
+air.cornerpush.veloff=0
+getpower = ifelse(!var(13),108,36)*!var(20), 18*!var(20)
+givepower = 18,18
+envshake.time=12
+envshake.ampl=3
+
+[State 210, hit]
+type=hitdef
+triggerall=anim = 225
+trigger1=animelem = 6
+attr=S,NA
+damage=50,0
+animtype=Hard
+guardflag=MA
+hitflag=MAF
+priority=5,Hit
+pausetime=10,9
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=60), var(43):=-95
+hitsound=s1,6
+guardsound=s2,0
+ground.type=high
+ground.slidetime = 12
+ground.hittime  = 24
+ground.velocity = -17
+air.velocity = -4,-3
+air.cornerpush.veloff = 0
+getpower = ifelse(!var(13),108,36)*!var(20), 18*!var(20)
+givepower = 18,18
+envshake.time=12
+envshake.ampl=3
+
+[State 220, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+;Dodge follow up punch
+[Statedef 221]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd=18*!var(20)
+ctrl = 0
+;velset = 0,0
+anim =225
+
+[State 0, VelAdd]
+type = Velset
+triggerall = prevstateno != 100
+trigger1 = time = 0
+x = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,2
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,5
+volume = 0
+channel = -1
+
+[State 210, hit]
+type=hitdef
+triggerall=anim = 225
+trigger1=animelem = 3
+attr=S,NA
+damage=40,0
+animtype=Hard
+guardflag=MA
+hitflag=MAF
+priority=5,Hit
+pausetime=5,5
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=85), var(43):=-75
+hitsound=s1,6
+guardsound=s2,0
+ground.type=low
+ground.hittime=16
+ground.slidetime=16
+ground.velocity= -2, 0
+ground.cornerpush.veloff= -8
+air.type=high
+ground.type=high
+air.hittime=12
+air.velocity= -2.5, -7
+air.cornerpush.veloff=0
+getpower = ifelse(!var(13),108,36)*!var(20), 18*!var(20)
+givepower = 18,18
+envshake.time=12
+envshake.ampl=3
+
+[State 210, hit]
+type=hitdef
+triggerall=anim = 225
+trigger1=animelem = 6
+attr=S,NA
+damage=50,0
+animtype=Hard
+guardflag=MA
+hitflag=MAF
+priority=5,Hit
+pausetime=10,9
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=60), var(43):=-95
+hitsound=s1,6
+guardsound=s2,0
+ground.type = Low
+ground.slidetime = 12
+ground.hittime  = 15
+ground.velocity = -3,-6.5
+air.velocity = -2.2,-3.2
+air.cornerpush.veloff = 0
+fall.recover = 0
+fall.recovertime = 50
+getpower = ifelse(!var(13),144,72)*!var(20), 36*!var(20)
+givepower = 36,36
+
+[State 220, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Standing Light Kick
+[Statedef 230]
+type    = S
+movetype= A
+physics = S
+juggle  = 2
+poweradd= 0
+ctrl = 0
+velset = 0,0
+anim = ifelse(p2bodydist x <= 6,235,230)
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,3
+volume = 0
+channel = -1
+
+[State 215, hit]
+type=hitdef
+triggerall = anim = 230
+trigger1 =time = 0
+attr=S,NA
+damage=35,0
+animtype=Light
+guardflag=MA
+hitflag=MAF
+priority=3,Hit
+pausetime = ifelse(var(20), 4, 8), ifelse(var(20), 4, 8)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-55
+hitsound=s1,2
+guardsound=s2,0
+ground.type=Low
+ground.slidetime=9
+ground.hittime=12
+ground.velocity=-6
+air.type=Low
+air.velocity=-2,-2
+getpower = 72*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=1
+
+[State 215, hit]
+type=hitdef
+triggerall = anim = 235
+trigger1 =time = 0
+attr=S,NA
+damage=45,0
+animtype=Light
+guardflag=MA
+hitflag=MAF
+priority=3,Hit
+pausetime = ifelse(var(20), 4, 8), ifelse(var(20), 4, 8)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-97
+hitsound=s1,2
+guardsound=s2,0
+ground.type=Low
+ground.slidetime=9
+ground.hittime=12
+ground.velocity=-6
+air.type=Low
+air.velocity=-2,-2
+getpower = 72*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=1
+
+[State 230, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Standing Medium Kick
+[Statedef 240]
+type    = S
+movetype= A
+physics = S
+juggle  = 3
+poweradd=18*!var(20)
+ctrl = 0
+velset = 0,0
+anim = 240;ifelse(p2bodydist x <=5,235,240)
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,0
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 220, hit]
+type=hitdef
+trigger1=time = 0
+attr=S,NA
+damage=70,0
+animtype=Medium
+guardflag=MA
+hitflag=MAF
+priority=4,Hit
+pausetime = ifelse(var(20), 5, 10), ifelse(var(20), 5, 10)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=75), var(43):=-80
+hitsound=s1,0
+guardsound=s2,0
+ground.type=High
+ground.slidetime=11
+ground.hittime=14
+ground.velocity=-8
+air.type=Low
+air.velocity=-4,-3
+getpower = ifelse(!var(13),144,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=2
+
+[State 240, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Standing Strong Kick
+[Statedef 250]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd=18*!var(20)
+ctrl = 0
+velset = 0,0
+anim = 250
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+player = 15,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,2
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,5
+volume = 0
+channel = -1
+
+[State 225, hit]
+type=hitdef
+trigger1=time = 0
+attr=S,NA
+damage=101,2
+animtype=Hard
+guardflag=MA
+hitflag=MAF
+priority=5,Hit
+pausetime = ifelse(var(20), 6, 12), ifelse(var(20), 6, 12)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=100), var(43):=-68
+hitsound=s1,6
+guardsound=s2,0
+ground.type=low
+ground.slidetime=12
+ground.hittime=16
+air.hittime=16
+ground.velocity=-10;,-2
+air.type=Low
+air.velocity=-4,-4
+getpower = ifelse(!var(13),216,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=12
+envshake.ampl=3
+
+[State 250, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Standing Strong Kick
+[Statedef 251]
+type    = S
+movetype= A
+physics = S
+juggle  = 5
+poweradd=18*!var(20)
+ctrl = 0
+;velset = 0,0
+anim = 250
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 15,0
+
+
+[State 0, VelAdd]
+type = Velset
+triggerall = prevstateno != 100
+trigger1 = time = 0
+x = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,2
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,5
+volume = 0
+channel = -1
+
+[State 225, hit]
+type=hitdef
+trigger1=anim=250
+attr=S,NA
+damage=89,0
+animtype=Hard
+guardflag=MA
+hitflag=MAF
+priority=4,Hit
+pausetime = ifelse(var(20), 6, 12), ifelse(var(20), 6, 12)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=90), var(43):=-65
+hitsound=s1,6
+guardsound=s2,0
+ground.type=High
+ground.slidetime=17
+ground.hittime=17
+ground.velocity=-10
+air.type=Low
+air.hittime=12
+air.velocity = -8,-5
+airguard.velocity = -6.67,-1
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+airguard.cornerpush.veloff = 0
+yaccel=.5
+persistent=0
+envshake.time = 9
+envshake.ampl = 3
+getpower = ifelse(!var(13),216,72)*!var(20), 36*!var(20)
+givepower = 36,36
+persistent = 0
+fall = 1
+air.fall = 1
+
+[State 250, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Standing Strong Kick
+[Statedef 300]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+poweradd=18*!var(20)
+ctrl = 0
+velset = 0,0
+anim = 300
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+player = 15,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = S1000,7
+volume = 200
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 4
+value = S0,5
+volume = 0
+channel = -1
+
+[State 225, hit]
+type=hitdef
+trigger1=time = 0
+attr=S,NA
+damage=101,2
+animtype=Hard
+guardflag=H
+hitflag=MAF
+priority=5,Hit
+pausetime = ifelse(var(20), 6, 12), ifelse(var(20), 6, 12)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-72
+hitsound=s1,6
+guardsound=s2,0
+ground.type=low
+ground.slidetime=12
+ground.hittime=16
+air.hittime=16
+ground.velocity=-10;,-2
+air.type=Low
+air.velocity=-4,-4
+getpower = ifelse(!var(13),216,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=12
+envshake.ampl=3
+
+[State 250, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Crouching Light Punch
+[Statedef 400]
+type    = C
+movetype= A
+physics = C
+juggle  = 2
+poweradd= 0
+ctrl = 0
+anim = 400
+velset = 0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,4
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 230, hit]
+type=hitdef
+trigger1=time = 0
+attr=C,NA
+damage=15,0
+animtype=Light
+guardflag=MA
+hitflag=MAF
+priority=3,Hit
+pausetime = ifelse(var(20), 4, 8), ifelse(var(20), 4, 8)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-40
+hitsound=s1,5
+guardsound=s2,0
+ground.type=Low
+ground.slidetime=9
+ground.hittime=12
+ground.velocity=ifelse(prevstateno=230,-6,-4)
+ground.cornerpush.veloff=ifelse(prevstateno=230,-9,-6)
+air.type=Low
+air.velocity=-2,-2
+getpower = 72*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=1
+
+[State 400, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Crouching Medium Punch
+[Statedef 410]
+type    = C
+movetype= A
+physics = C
+juggle  = 3
+poweradd=18*!var(20)
+ctrl = 0
+anim = 410
+velset = 0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,1
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 235, hit]
+type=hitdef
+trigger1=time=0
+attr=C,NA
+damage=45,0
+animtype=Medium
+guardflag=MA
+hitflag=MAF
+priority=4,Hit
+pausetime = ifelse(var(20), 5, 10), ifelse(var(20), 5, 10)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-40
+hitsound=s1,4
+guardsound=s2,0
+ground.type=Low
+ground.slidetime=11
+ground.hittime=14
+ground.velocity=-7
+air.type=Low
+air.velocity=-3,-3
+getpower = ifelse(!var(13),144,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=2
+
+[State 410, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+;---------------------------------------------------------------------------
+; Crouching Strong Punch
+[Statedef 420]
+type    = C
+movetype= A
+physics = C
+juggle  = 4
+poweradd=18*!var(20)
+ctrl = 0
+anim = 420
+velset = 0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,2
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,5
+volume = 0
+channel = -1
+
+[State 240, hit]
+type=hitdef
+trigger1=time=0
+attr=C,NA
+damage=90,0
+animtype=Hard
+guardflag=MA
+hitflag=MAF
+priority=5,Hit
+pausetime=6,12
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=75), var(43):=-103
+hitsound=s1,6
+guardsound=s2,0
+ground.type = High
+ground.slidetime = 12
+ground.hittime  = 24
+ground.velocity = -12
+air.velocity = -4,-3
+air.cornerpush.veloff = 0
+persistent = 0
+getpower = ifelse(!var(13),216,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=12
+envshake.ampl=3
+;fall=1
+;air.fall=1
+;fall.recover=1
+;fall.recovertime=20
+;p2stateno=5051
+;ignorehitpause=0
+
+[State 420, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+;---------------------------------------------------------------------------
+; Opponent Launched
+[Statedef 5051]
+type    = A
+movetype= H
+physics = N
+velset = 0, 0
+ctrl = 0
+
+[State 5051, ChangeAnim2]
+type = ChangeAnim2
+trigger1 = Time = 0
+value = 5051
+
+[State 5051, VelSet]
+type = VelSet
+trigger1 = AnimElem = 2
+y = -10
+
+[State 5051, PlaySnd]
+type = VelAdd
+trigger1 = AnimElem = 2,>= 0
+y = .44
+
+[State 5051, ChangeState]
+type = SelfState
+trigger1 = Time > 27
+trigger1 = Vel Y >= 0
+value = 5040
+ctrl = 1
+;---------------------------------------------------------------------------
+; Crouching Light Kick
+[Statedef 430]
+type    = C
+movetype= A
+physics = C
+juggle  = 2
+poweradd= 0
+ctrl = 0
+anim = 430
+velset = 0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,3
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 245, hit]
+type=hitdef
+trigger1=time = 0
+attr=C,NA
+damage=25,0
+animtype=Light
+guardflag=L
+hitflag=MAFD
+priority=3,Hit
+pausetime = ifelse(var(20), 4, 8), ifelse(var(20), 4, 8)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-7
+hitsound=s1,2
+guardsound=s2,0
+ground.type=Low
+ground.slidetime=9
+ground.hittime=12
+ground.velocity=-4
+air.type=Low
+air.velocity=-2,-2
+down.velocity=-2,-2
+getpower = 72*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=1
+
+[State 430, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Crouching Medium Kick
+[Statedef 440]
+type    = C
+movetype= A
+physics = C
+juggle  = 3
+poweradd=18*!var(20)
+ctrl = 0
+anim = 440
+velset = 0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,0
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 250, hit]
+type=hitdef
+trigger1=time = 0
+attr=C,NA
+damage=65,0
+animtype=Medium
+guardflag=L
+hitflag=MAF
+priority=4,Hit
+pausetime = ifelse(var(20), 5, 10), ifelse(var(20), 5, 10)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-7
+hitsound=s1,0
+guardsound=s2,0
+ground.type=Low
+ground.slidetime=11
+ground.hittime=14
+ground.velocity=-7
+air.type=Low
+air.velocity=-3,-3
+down.velocity=-3,-3
+getpower = ifelse(!var(13),144,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=2
+
+[State 440, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Crouch Strong Kick
+[Statedef 450]
+type    = C
+movetype= A
+physics = C
+juggle  = 4
+poweradd=18*!var(20)
+ctrl = 0
+anim = 450
+velset = 0,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,5
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,2
+volume = 0
+channel = -1
+
+[State 255, hit]
+type=hitdef
+trigger1=time = 0
+attr=C,NA
+damage=90,0
+animtype=Hard
+guardflag=L
+hitflag=MAF
+priority=5,Hit
+pausetime = ifelse(var(20), 6, 12), ifelse(var(20), 6, 12)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=99), var(43):=-7
+hitsound=s1,6
+guardsound=s2,0
+ground.type=Trip
+ground.slidetime=12
+ground.hittime=16
+ground.velocity=-3,-2
+air.type=Trip
+air.velocity=-3,-2
+down.velocity=-4,-4
+getpower = ifelse(!var(13),216,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=12
+envshake.ampl=3
+fall=1
+fall.recover=0
+
+[State 450, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Jump Light Punch
+[Statedef 600]
+type    = A
+movetype= A
+physics = A
+juggle  = 2
+poweradd= 0
+ctrl = 0
+anim = 600
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,4
+volume = 0
+channel = -1
+
+;[State 0, VelAdd]
+;type = VelAdd
+;triggerall = movecontact = 1
+;trigger1 = vel y > 0
+;y = ((-1)*(vel y))
+;ignorehitpause =
+;persistent = 0
+
+[State 260, hit]
+type=hitdef
+trigger1=time = 0
+attr=A,NA
+damage=27,0
+animtype=Light
+guardflag=HA
+hitflag=MAF
+priority=3,Hit
+pausetime = ifelse(var(20), 4, 8), ifelse(var(20), 4, 8)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-48
+hitsound=s1,5
+guardsound=s2,0
+ground.type=High
+ground.slidetime=9
+ground.hittime=12
+ground.velocity=-3
+air.type=Low
+air.velocity=-2,((vel y)+1)
+getpower = 72*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=1
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = animelem = 9
+value = 1
+;---------------------------------------------------------------------------
+; Jump Medium Punch
+[Statedef 610]
+type    = A
+movetype= A
+physics = A
+juggle  = 3
+poweradd=18*!var(20)
+ctrl = 0
+anim = 610
+
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 5
+value = S0,1
+volume = 0
+channel = -1
+
+[State 265, hit]
+type=hitdef
+trigger1= time = 0
+attr=A,NA
+damage=45,0
+animtype=Medium
+guardflag=HA
+hitflag=MAF
+priority=4,Hit
+pausetime=10,8
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-48
+hitsound=s1,4
+guardsound=s2,0
+ground.type=High
+ground.slidetime=11
+ground.hittime=14
+ground.velocity=-5
+air.type=Low
+air.velocity=-4,((vel y)+1)
+getpower = ifelse(!var(13),144,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=2
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = animelem = 11
+value = 1
+;---------------------------------------------------------------------------
+; Jump Strong Punch
+[Statedef 620]
+type    = A
+movetype= A
+physics = A
+juggle  = 4
+poweradd=18*!var(20)
+ctrl = 0
+anim = 620
+
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,2
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 8
+value = S0,2
+volume = 0
+channel = -1
+
+[State 270, hit]
+type=hitdef
+trigger1=time = 0
+attr=A,NA
+damage=75,0
+animtype=Hard
+guardflag=HA
+hitflag=MAF
+priority=5,Hit
+pausetime = ifelse(var(20), 6, 12), ifelse(var(20), 6, 12)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-54
+hitsound=s1,6
+guardsound=s2,0
+ground.type=High
+ground.slidetime=12
+ground.hittime=16
+ground.velocity=-7
+air.type=Low
+air.velocity=-6,((vel y)+1)
+getpower = ifelse(!var(13),216,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=12
+envshake.ampl=3
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = animelem = 8
+value = 1
+;---------------------------------------------------------------------------
+; Jump Light Kick
+[Statedef 630]
+type    = A
+movetype= A
+physics = A
+juggle  = 2
+poweradd= 0
+ctrl = 0
+anim = 630
+
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,3
+volume = 0
+channel = -1
+
+[State 275, hit]
+type=hitdef
+trigger1=time = 0
+attr=A,NA
+damage=40,0
+animtype=Light
+guardflag=HA
+hitflag=MAF
+priority=3,Hit
+pausetime = ifelse(var(20), 4, 8), ifelse(var(20), 4, 8)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-112
+hitsound=s1,2
+guardsound=s2,0
+ground.type=High
+ground.slidetime=9
+ground.hittime=12
+ground.velocity=-3
+air.type=Low
+air.velocity=-2,((vel y)+2)
+getpower = 72*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=1
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = animelem = 11
+value = 1
+;---------------------------------------------------------------------------
+; Jump Medium Kick
+[Statedef 640]
+type    = A
+movetype= A
+physics = A
+juggle  = 3
+poweradd=18*!var(20)
+ctrl = 0
+anim = 640
+
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,0+(random%2)
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1
+value = S0,0
+volume = 0
+channel = -1
+
+[State 280, hit]
+type=hitdef
+trigger1=time = 0
+attr=A,NA
+damage=65,0
+animtype=Medium
+guardflag=HA
+hitflag=MAF
+priority=4,Hit
+pausetime = ifelse(var(20), 5, 10), ifelse(var(20), 5, 10)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-92
+hitsound=s1,0
+guardsound=s2,0
+ground.type=High
+ground.slidetime=11
+ground.hittime=14
+ground.velocity=-5
+air.type=Low
+air.velocity=-2.5,((vel y)+2.5)
+getpower = ifelse(!var(13),144,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=9
+envshake.ampl=2
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = animelem = 8
+value = 1
+;---------------------------------------------------------------------------
+; Jump Strong Kick
+[Statedef 650]
+type    = A
+movetype= A
+physics = A
+juggle  = 4
+poweradd=18*!var(20)
+ctrl = 0
+anim = 650
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 1 && random <= 700
+value = S3,2
+volume = 0
+channel = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 10
+value = S0,4
+volume = 0
+channel = -1
+
+[State 285, hit]
+type=hitdef
+trigger1=time = 0
+attr=A,NA
+damage=85,0
+animtype=Hard
+guardflag=HA
+hitflag=MAF
+priority=5,Hit
+pausetime = ifelse(var(20), 6, 12), ifelse(var(20), 6, 12)
+sparkno = -1 * (var(40):=8010)**0
+guard.sparkno=s8100
+sparkxy = -10 + 0*(var(42):=70), var(43):=-59
+hitsound=s1,6
+guardsound=s2,0
+ground.type=High
+ground.slidetime=12
+ground.hittime=16
+ground.velocity=-7
+air.type=Low
+air.velocity=-6,((vel y)+1)
+getpower = ifelse(!var(13),216,72)*!var(20), 36*!var(20)
+givepower = 36,36
+envshake.time=12
+envshake.ampl=3
+
+[State 0, CtrlSet]
+type = CtrlSet
+trigger1 = animelem = 7
+value = 1
+

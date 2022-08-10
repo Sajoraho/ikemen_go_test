@@ -1,0 +1,145 @@
+--------------------------------------|Guile by Spaz&Punt|--------------------------------------
+
++Contato : ordepogai@yahoo.com.br
+
+-Fóruns que você pode me encontrar :
+
++PdM : Sp4zm0
++FanaticMugen : Spaz
++MugenGuild : Spaz&Punt
+
++Versão modificada de Guile das séries de Street Fighter.
+___________
+           |
++ Profile  |
+___________|
+
+Nome : Guile
+Game de Origem : Capcom versus SNK 2 + Extras
+Versão do MUGEN : WinMugen Only(Maybe it goes on Linux, I have no idea)
+Porcentagem : ??%
+Início : 03.07.2006 (dd.mm.yyyy)
+
+---------------------
+I.O quê está feito?  |
+---------------------
+
+-Todo o requerido
+-Ataques Básicos
+-Intro contra Charlie/Nash
+-Intro contra Ken Masters
+-Tela de finalização
+-5 paletas, por enquanto...
+-Efeitos de vários jogos
+-Super Pulo e Pulo Curto
+-3 habilidades :
+ *Power Charge
+ *3 Agarrões
+ *Esquiva
+ *Parry(Stand, Crouch and Air)
+-4 especiais :
+ *Sonic Boom
+ *Flash Kick 
+ *Reverse Flash Kick
+ *Spinning Pile Driver
+-9 Hipers :
+ *Somersault Strike
+ *Somersault Slash
+ *Opening Gambit
+ *Sonic Hurricane
+ *Sonic Break
+ *Total Wipeout
+ *Final Mission
+ *Crossfire Assault
+ *Sonic Boom Typhoon 
+
+-----------------
+II.O quê falta?  |
+-----------------
+
+-Arrumar os BUGs
+-Um agarrão
+-Arrumar o Finish BG(Não vai se ativar por enquanto)
+-Outras coisas que forem surgindo com o tempo(diga-se, coisas que eu tenha esquecido =P)
+
+------------------------------
+III.Agradecimentos Especiais  |
+------------------------------
+
+-Elecbyte, pelo M.U.G.E.N.
+
+-The Dreamslayer e Wuwo, pelos rips open-source de CvS2.
+
+-Ironmugen, por deixar eu usar qualquer coisa de suas criações. =D
+
+-Duende Macabro aka DM, pelos bagulhos open-source, especialmente os hitsparks editados dos do Panda.
+
+-Z Sabre User aka Panda, por me deixar usar os CvS2 HitSparks de cua criação cvshoahmaru. :)
+
+-@ndroide, por deixar todos usarem seus códigos, sprites, etc. :)
+
+-P.o.t.S, pelos rips de Final Fantasy 8 e por me deixar usar os códigos, sprites e mais outras coisas dele.
+
+-Perfect.zeRo, por me mandar o Adobe PhotoShop 7. thanks, man! ;___;
+
+-Mr.Norris, pelos feedbacks.Obrigado!
+
+-SyN, pelos rips de Melty Blood.Thanks, man!
+
+-Kurai Naito, por deixar todos usarem os códigos dele, sprites e pelo ótimo tutorial de blur, e por BUG Reports das versões anteriores do Guile :). Agora nem pode mais dar feedback. :P 
+
+-Don Drago, por deixar as pessoas usarem seus códigos, é de pessoas assim que o MUGEN precisa.\o\
+
+-Winane, de onde o Don Drago se baseou para fazer a ativação de A.I dos chars dele, logo, eu usei também. :P
+
+-Mauteck, me ajudou enviando o PhotoFiltre, e por ser beta-tester. :)
+
+-Ixnaydk aka VIADix( =P ), pelos seus códigos loucos postados na PdM, e pelos feedbacks das versões anteriores do Guile.
+
+-Equinócio, pela grande ajuda que ele me prestou no passado. ;)
+
+-Electrocaid, pelos DOS-Patches(Encontrados na FanaticMugen) e por ser um cara legal. lol
+
+-N-Mario, Eu fiz alguns golpes que são do Guile dele.Thanks, man!
+
+-Para o povo da PdM, por sugestões em geral para outros chars.
+
+-Capcom, pelo game CvS2.
+
+-Quem eu esqueci, minhas sinceras desculpas. ;__;
+
+-Você por baixar essa merda. ;__;
+
+-------------------------
+IV.Considerações Finais  |
+-------------------------
+
+-Capcom vs SNK 2, Guile, são propriedades da Capcom.
+
+-Este char tem meu próprio "groove" e costumização, porque eu faço meus chars para meu uso, se não gostar, delete do seu PC. ;) Mas se tiver achado qualquer BUG, me envie um e-mail ou PM. ;)
+
+-Todos os meus bagulhos são open-source, mas tenha cuidado ao pegar alguma coisa, porque, talvez você pegue alguma coisa programada/ripada por outro criador.Me manda um e-mail se tiver qualquer dúvida. :)
+
+-Divirta-se! \o/
+
+===========
+
++ UPDATE 1(Eng.)
+
+-Added Finish BG for the other Supers
+-Some BUGs fixed
+-Some effects improved
+-Added a damage dampening
+-Combos fixed
+
++ UPDATE 1(Pt.)
+
+-Adicionado um Finish BG para os outros supers
+-Alguns BUGs arrumados
+-Alguns efeitos melhorados
+-Adicionado um redutor de dano
+-Combos arrumados
+
+===========
+
+Fim.

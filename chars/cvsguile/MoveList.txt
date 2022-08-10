@@ -1,0 +1,108 @@
+Guile - Capcom versus SNK 2 - Move List
+
+--------
+I.Misc  |
+--------
+
+Light Punch = X
+Medium Punch = Y
+Strong Punch = Z
+Light Kick = A
+Medium Kick = B
+Strong Kick = C
+
+Extra Moves
+- Knee Bazooka = B,a or F,a 
+- Spinning Back Knuckle = F,y
+
+Throws
+- Dragon Suplex = F, y/z 
+- Judo Throw = F, b/c
+- Flying Mayor = F,y/z(Air)
+- Airjack = F, b/c(Air) ; Missing
+
+-Power Charge = y+b
+
+-------------
+II.Specials  |
+-------------
+
+commands.cmd :
+
+Sonic Boom = B,F, x/y/z
+Flash Kick = Hold D, F, a/b/c
+Reverse Flash Kick = D,F, a/b/c (Air Also)
+Spinning Pile Driver = D,B, x/y/z
+
+commands-alt.cmd :
+
+Sonic Boom = D,F, x/y/z
+Flash Kick = D,F, a/b/c
+Reverse Flash Kick = D,B, a/b/c (Air Also)
+Spinning Pile Driver = D,F, x/y/z
+
+------------
+III.Hypers  |
+------------
+
+-|Lv.1|-
+
+commands.cmd :
+
+Somersault Strike = Hold DB, DF, DB, UF, a/b/c
+Somersault Slash = Hold DB, DF, DB, UF, x/y/z
+Opening Gambit = Hold B, F, B, F, a/b/c
+Sonic Hurricane = Hold B, F, B, F, x/y/z
+
+commands-alt.cmd :
+
+Somersault Strike = D,F,D,F, a/b/c
+Somersault Slash = D,B,D,B, a/b/c
+Opening Gambit = D,B,D,B, x/y/z
+Sonic Hurricane = D,F,D,F, x/y/z
+
+-|Lv.2|-
+
+commands.cmd :
+
+Sonic Break(*) = Hold B,F,D,F, x+y/x+z/y+z
+Total Wipeout = D,F,D,F, a/b/c
+
+commands-alt.cmd :
+
+Sonic Break(*) = D,B,D,F, x/y/z
+Total Wipeout = D,B,D,F, a/b/c
+
+-|Lv.3|-
+
+commands.cmd :
+
+Final Mission = Hold B, F, a+b/a+c/b+c
+Crossfire Assault = D, F, D, F, a+b/a+c/b+c
+Sonic Boom Typhoon = Hold B, F, x+y/x+z/y+z
+
+commands-alt.cmd :
+
+Final Mission = D,F,D,F, x+y/x+z/y+z
+Crossfire Assault = D, F, D, F, a+b/a+c/b+c
+Sonic Boom Typhoon = D, B, D, F, x+y/x+z/y+z
+
+(*) = Press any punch buttom 3 times, and he'll throw more projectiles.
+
+-------------
+IV.Gameplay  |
+-------------
+
+Well, he has lot of combos, may you try simple ones, like LP, LP, Spinning Back Knuckle.And try POSSIBLES ones, also, like : Flash Kick, Reverse Flash Kick.Has lot of this kind.
+
+The character has some super cancels and dream cancels, here the list of all.
+
+-Sonic Boom -> Opening Gambit(No bottom-hold needed)
+-Sonic Boom -> Sonic Hurricane(No bottom-hold needed)
+-Opening Gambit -> Somersault Strike
+-Opening Gambit -> Somersault Strike --> Somersault Slash or -> Somersault Slash, directly.
+-Opening Gambit -> Total Wipeout(No bottom-hold needed)
+
+Maybe, in future, I'll add some new Super and Dream Cancels. ;)
+
+Have fun! :)

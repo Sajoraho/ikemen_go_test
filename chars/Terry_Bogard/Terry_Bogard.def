@@ -1,0 +1,41 @@
+;=========================================================================================
+;                               _____________________
+;==============================|Terry Bogard by Memo |====================================
+;                               ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+;=========================================================================================
+[Info]
+name = "Terry Bogard"
+displayname = "Terry Bogard"
+versiondate = 11,14,2014
+mugenversion = 1.0
+author = "MEMO"
+pal.defaults = 4,1,2,3,5,6,7,8,9,10,11,12
+localcoord = 320, 240
+[Files]
+sprite = Sprite.sff
+anim = Anim.air
+sound = Sound.snd
+cmd = Command.cmd
+cns = Constants.cns
+stcommon = common1.cns
+st = States\System.st
+st1 = States\Normal.st
+st2 = States\Special.st
+st3 = States\Super.st
+st4 = States\Helper.st
+st5 = States\Custom.cns
+pal1	= Palettes/1.act
+pal2	= Palettes/2.act
+pal3	= Palettes/3.act
+pal4	= Palettes/Default.act
+pal5	= Palettes/5.act
+pal6	= Palettes/6.act
+pal7	= Palettes/7.act
+pal8	= Palettes/8.act
+pal9	= Palettes/9.act
+pal10	= Palettes/10.act
+pal11	= Palettes/11.act
+pal12	= Palettes/12.act
+[Arcade]
+intro.storyboard =
+ending.storyboard =

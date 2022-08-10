@@ -1,0 +1,38 @@
+;---------------------------------------------------------------
+[Info]
+name ="Goenitz"
+displayname ="O.Goenitz"
+versiondate =10,15,2007    
+mugenversion =07,31,2000  
+author ="illusion"
+original author ="YongMing"
+pal.defaults=4,10,5,8
+
+[Files]
+cmd =OGoenitz.cmd
+cns =Ogoenitz.INI
+st =Ogoenitz.INI
+stcommon =common1.cns
+sprite =Goenitz.sff
+anim =Goenitz.air
+sound =Goenitz.snd
+pal1=Goenitz4.act
+pal2=Goenitz5.act
+pal3=Goenitz6.act
+pal4=Goenitz2.act
+pal5=Goenitz1.act
+pal6=Goenitz3.act
+pal7=Goenitz4.act
+pal8=Goenitz5.act
+pal9=Goenitz6.act
+pal10=Goenitz7.act;Goenitz1.act
+pal11=Goenitz2.act
+pal12=Goenitz3.act
+st1=A.I.INI
+st2=OmegaG.INI
+st3=DarkG.INI
+st4=other/Dummy.INI
+st5=other/Test.INI
+[Arcade]
+intro.storyboard=
+ending.storyboard=

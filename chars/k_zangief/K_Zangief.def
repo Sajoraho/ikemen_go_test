@@ -1,0 +1,27 @@
+; Player information
+[Info]
+name ="Zangief"        
+displayname ="Zangief" 
+versiondate =02,02,2009  
+mugenversion =06,14,2003  
+author ="KoopaKoot"     
+pal.defaults =4 
+
+; Files for the player
+[Files]
+cmd=Command.cmd
+cns=Constants.cns
+st=Constants.cns
+stcommon =common1.cns
+sprite  =Sprites.sff
+anim    =Zangief.air
+sound   =Zangief.snd
+pal1=Pal2.act
+pal2=Pal3.act ;Thanks Hoshi
+pal3=pal4.act
+pal4=Pal1.act
+pal5=Pal5.act ; Thanks Cybaster
+pal6=Pal6.act
+
+
+
